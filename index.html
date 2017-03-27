@@ -4,109 +4,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> Font Awesome Cheatsheet </title>
+	<title> Beekeeper Studio >> FontAwesome Cheatsheet </title>
+	<!-- jquery -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js" charset="utf-8"></script>
+	<!-- datatable -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.13/datatables.min.css"/>
+	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- fontawesome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- custom css -->
+	<link rel="stylesheet" href="lib/styles/main.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.13/datatables.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Lora:400,400i" rel="stylesheet">
 </head>
-<style media="screen">
-	body {
-		background-color: ghostwhite;
-		font-family: 'Lora', serif;
-	}
-	.table > tbody > tr > td {
-		border-top: 1px solid white;
-	}
-	table#example tbody tr td:nth-child(1),
-	table#example tbody tr td:nth-child(4),
-	table#example tbody tr td:nth-child(5),
-	table#example tbody tr td:nth-child(7) {
-		text-align: center;
-		/*background-color: yellow;*/
-		}
-	table tfoot tr th:nth-child(1),
-	table tfoot tr th:nth-child(4),
-	table tfoot tr th:nth-child(5),
-	table tfoot tr th:nth-child(7) {
-		text-align: center;
-		/*color: red;*/
-	}
-	table#example {
-		background-color: white;
-	}
-
-	.top-banner {
-		background-color: #1d956f;
-		color: ghostwhite;
-		height: auto;
-		padding-top: 60px;
-		padding-bottom: 120px;
-	}
-	.tablecontainer {
-		padding: 40px 20px;
-		border-radius: 3px;
-		background-color: white;
-		border: 1px solid gainsboro;
-	}
-	.container {
-		margin-top: -150px;
-	}
-	.box1 {
-		height: 15px;
-		width: 90%;
-		margin-right: auto;
-		margin-left: auto;
-		background-color: #4ab090;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		margin-top: 60px;
-	}
-	.box2 {
-		height: 20px;
-		width: 95%;
-		margin-right: auto;
-		margin-left: auto;
-		background-color: #b2e1d2;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		margin-top: 1px;
-		margin-bottom: 1px;
-	}
-	.top-banner  h1 {
-		font-family: 'Lobster', cursive;
-		font-size: 60px;
-		font-weight: bold;
-	}
-	.top-banner  p {
-		font-size: 20px;
-		font-weight: normal;
-	}
-	.nogutter {
-		margin-left: -15px;
-		margin-right: -15px;
-	}
-
-	table > thead, table > tfoot {
-		background-color: whitesmoke;
-	}
-	table > tfoot {
-		padding-bottom: 20px;
-	}
-
-</style>
 <body>
 	<div class="container-fluid nogutter">
 		<div class="top-banner text-center">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<h1>Font Awesome <br>Searchable Cheatsheet</h1>
+					<h1>Font Awesome <br>Live Searchable Cheatsheet</h1>
 					<p>
-						Complete Font Awesome Cheatsheet with Unicode, CSS code, Version, and Category. <br>
-						Created By Beekeeperstudio.com
+						Complete Font Awesome Cheatsheet with Unicode, CSS Class, Version, and Category. <br>
+						We have created this as our reference. We though it will be useful for everyone.
 					</p>
 				</div>
 			</div>
@@ -114,7 +35,9 @@
 	</div>
 	<div class="container">
 		<div class="box1"></div>
-		<div class="box2"></div>
+		<div class="box2">
+			<input class="form-control" type="text" id="customsearch" placeholder="Super Awesome Search is here" autofocus>
+		</div>
 	<div class="tablecontainer">
 		<table id="example" class="table display table-hover table-striped" cellspacing="0" width="100%">
 	        <thead>
@@ -7948,17 +7871,27 @@
 		</table>
 	</div>
 	</div>
-	<div class="container-fluid nogutter">
+	<div class="container-fluid nogutter text-center">
 		<footer>
-			content
+			<div class="footer_container">
+				<div class="footer_logo">
+					<img src="resources/logo.png" alt="Beekeeper Studio Logo">
+				</div>
+				Ver 1.0<br>
+				2017 | Created by <a href="http://www.beekeeperstudio.com" target="_blank">Beekeeper Design Studio</a>
+			</div>
 		</footer>
 	</div>
 </body>
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-		"lengthMenu": [ 25, 50, 100 ]
+	$(document).ready(function() {
+	    var dataTable = $('#example').DataTable( {
+	        // "paging":   true,
+	        "sDom":     'ltipr' // this is for the search input DO NOT DELETE
+	    } );
+	    $("#customsearch").keyup(function() {
+	        dataTable.search(this.value).draw();
+	    });
 	});
-} );
 </script>
 </html>
