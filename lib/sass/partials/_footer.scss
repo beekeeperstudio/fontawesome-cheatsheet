@@ -1,0 +1,18 @@
+// fontawesome-cheatsheet
+// 27 mar 2017
+// _footer.scss
+
+footer {
+    z-index: -10;
+    position: relative;
+    background-color: $bannerbg;
+    color: white;
+    .footer {
+        &_container {
+            padding: 120px 60px 60px 60px;
+            }
+        &_logo {
+            margin-bottom: 20px;
+            }
+        }
+    }
